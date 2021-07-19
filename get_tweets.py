@@ -25,3 +25,14 @@ for i in range(2):
 
 for t in threads:
     t.join()
+
+#DELETE FEW COLUMNS NOT NEEDED FROM TWINT
+import pandas as pd
+jokowi = pd.read_csv('tweet_jokowi.csv', low_memory=False)
+dpr = pd.read_csv('tweet_dpr.csv', low_memory=False)
+
+jokowi = jokowi[['username', 'name', 'likes_count', 'tweet']]
+dpr = dpr[['username', 'name', 'likes_count', 'tweet']]
+
+jokowi.to_csv('tweet-jokowi.csv', index=False)
+dpr.to_csv('tweet-dpr.csv', index=False)
